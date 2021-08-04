@@ -6,6 +6,9 @@ require "map"
 w = 400
 h = 240
   
+-- state
+menu = false
+
 -- tile
 tile = {}
 tile_w = 24 -- tile size, in pixels
@@ -37,7 +40,7 @@ function love.load()
   love.graphics.setDefaultFilter('nearest', 'nearest', 1)
   love.graphics.setBackgroundColor(1,1,1)
   love.graphics.setNewFont("fonts/m5x7.ttf", 16)
-    
+ 
   setup_map()
   
   start_time = love.timer.getTime()
@@ -49,16 +52,19 @@ function love.update(dt)
 end
 
 function love.keypressed(key, code, rep)
-  map_handle_keypress(key)
+  if menu then
+    -- handle menu UI here
+  else
+    map_handle_keypress(key)
+  end
   
   -- A 
   if(key == "return") then
-    
+    menu = not menu
   end
   
   -- B 
   if(key == "space") then
-    
   end
 
 end
@@ -73,6 +79,22 @@ function love.draw()
   love.graphics.rectangle('line', c_x * tile_w, c_y * tile_h, tile_w, tile_h)
   love.graphics.rectangle('line', c_x * tile_w - 2, c_y * tile_h - 2, tile_w + 4, tile_h + 4)
   love.graphics.rectangle('line', c_x * tile_w - 4, c_y * tile_h - 4, tile_w + 8, tile_h + 8)
+  
+  -- menu
+  if menu then
+    mex = w/2 - 100
+    mey = h/2 - 60
+    mew = 200
+    meh = 120
+    
+    love.graphics.setColor(0, 0, 0, 1)
+    love.graphics.rectangle('fill', mex+10, mey+10, mew, meh)
+    love.graphics.rectangle('fill', mex, mey, mew, meh)
+    love.graphics.setColor(1, 1, 1, 1)
+    love.graphics.rectangle('fill', mex+2, mey+2, mew-4, meh-4)
+    
+  end
+  
   
   -- debug info
   utils:draw_dev_hud()
