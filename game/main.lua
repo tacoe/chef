@@ -51,6 +51,16 @@ end
 function love.keypressed(key, code, rep)
   map_handle_keypress(key)
   
+  -- A 
+  if(key == "return") then
+    
+  end
+  
+  -- B 
+  if(key == "space") then
+    
+  end
+
 end
 
 function love.draw()
