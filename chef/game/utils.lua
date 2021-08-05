@@ -1,4 +1,5 @@
 local Base = require "lib/knife/base"
+require "map"
 
 utils = Base.extend({
   mi_x = 0,
@@ -33,7 +34,8 @@ function utils:draw_dev_hud()
   love.graphics.printf(
     "fps:"..love.timer.getFPS()..
     "/cx "..c_x.."/cy "..c_y..
-    "/mx "..map_x.."/my "..map_y,
+    "/mx "..map_x.."/my "..map_y..
+    "/lx "..loc_x().."/ly "..loc_y(),
     16, h - 16, w-32, 'right')  
   love.graphics.rectangle("fill", self.mi_x + w - 30, self.mi_y + h - 40, 10, 10)
 end

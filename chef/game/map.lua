@@ -19,6 +19,28 @@ function setup_map()
    end
 end
 
+function map_set(x, y, val)
+  if(y >= 0 and x >= 0 and x < w and y < h) then
+    map[y * map_w + x] = val
+  end
+end
+
+function map_get(x, y)
+  if(y >= 0 and x >= 0 and x < w and y < h) then
+    return map[y * map_w + x]
+  else 
+    return nil
+  end
+end
+
+function loc_x()
+  return map_x + c_x 
+end
+
+function loc_y()
+  return map_y + c_y 
+end
+
 function draw_map()
   love.graphics.setColor(1, 1, 1)
   

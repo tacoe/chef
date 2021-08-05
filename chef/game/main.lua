@@ -67,6 +67,10 @@ function love.keypressed(key, code, rep)
   if(key == "space") then
   end
 
+  if(key >= "1" and key<="9") then
+    map_set(loc_x(), loc_y(), key-"0") 
+  end
+
 end
 
 function love.draw()
@@ -91,8 +95,7 @@ function love.draw()
     love.graphics.rectangle('fill', mex+10, mey+10, mew, meh)
     love.graphics.rectangle('fill', mex, mey, mew, meh)
     love.graphics.setColor(1, 1, 1, 1)
-    love.graphics.rectangle('fill', mex+2, mey+2, mew-4, meh-4)
-    
+    love.graphics.rectangle('fill', mex+2, mey+2, mew-4, meh-4)    
   end
   
   
